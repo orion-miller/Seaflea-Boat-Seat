@@ -24,11 +24,23 @@ class MyApp(App):
 
         #Set widgets
         self.root.orientation = 'vertical'
-        self.root.add_widget(Label(text='   TIME: 11:03 AM', font_size='20sp', halign='left'))        
-        self.root.add_widget(Label(text='  SPEED: 28 MPH', font_size='20sp'))
-        self.root.add_widget(Label(text='    RPM: 2550', font_size='20sp'))
-        self.root.add_widget(Label(text='HEADING: NNE', font_size='20sp'))
-        self.root.add_widget(Label(text=' LIGHTS: ON', font_size='20sp'))
+        self.label_time = Label(text='        TIME: 11:03 AM', font_size='20sp', font_name='RobotoMono-Regular', halign='left')
+        self.label_speed = Label(text='       SPEED: 28 MPH', font_size='20sp', font_name='RobotoMono-Regular', halign='left')
+        self.label_rpm = Label(text='         RPM: 2550', font_size='20sp', font_name='RobotoMono-Regular', halign='left')
+        self.label_heading = Label(text='     HEADING: NNE', font_size='20sp', font_name='RobotoMono-Regular', halign='left')
+        self.label_lights = Label(text='      LIGHTS: ON', font_size='20sp', font_name='RobotoMono-Regular', halign='left')        
+
+        self.label_time.bind(size=self.label_time.setter('text_size')) 
+        self.label_speed.bind(size=self.label_speed.setter('text_size')) 
+        self.label_rpm.bind(size=self.label_rpm.setter('text_size')) 
+        self.label_heading.bind(size=self.label_heading.setter('text_size'))         
+        self.label_lights.bind(size=self.label_lights.setter('text_size')) 
+                 
+        self.root.add_widget(self.label_time)      
+        self.root.add_widget(self.label_speed) 
+        self.root.add_widget(self.label_rpm) 
+        self.root.add_widget(self.label_heading) 
+        self.root.add_widget(self.label_lights) 
 
         return self.root
         
