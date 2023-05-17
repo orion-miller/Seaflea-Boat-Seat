@@ -13,29 +13,24 @@ kivy.require('2.1.0') # replace with your current kivy version !
 #Set window resolution and turn off resizing
 Window.size = (320, 240)
 Config.set('graphics', 'resizable', False) 
-Config.write()
-class MainComponents(BoxLayout):
-
-    def __init__(self, **kwargs):
-        super(MainComponents, self).__init__(**kwargs)
-        #Set widgets
-        self.orientation = 'vertical'
-        self.add_widget(Label(text='   TIME: 11:03 AM', font_size='20sp', halign='left'))        
-        self.add_widget(Label(text='  SPEED: 28 MPH', font_size='20sp'))
-        self.add_widget(Label(text='    RPM: 2550', font_size='20sp'))
-        self.add_widget(Label(text='HEADING: NNE', font_size='20sp'))
-        self.add_widget(Label(text=' LIGHTS: ON', font_size='20sp'))   
-
-                    
-
+Config.write()       
 class MyApp(App):
 
     def build(self):
         #Set properties for window
         self.title = "Dash"
         self.icon = "Images//OM_Logo_32_32.ico"
+        self.root = BoxLayout()
 
-        return MainComponents()
+        #Set widgets
+        self.root.orientation = 'vertical'
+        self.root.add_widget(Label(text='   TIME: 11:03 AM', font_size='20sp', halign='left'))        
+        self.root.add_widget(Label(text='  SPEED: 28 MPH', font_size='20sp'))
+        self.root.add_widget(Label(text='    RPM: 2550', font_size='20sp'))
+        self.root.add_widget(Label(text='HEADING: NNE', font_size='20sp'))
+        self.root.add_widget(Label(text=' LIGHTS: ON', font_size='20sp'))
+
+        return self.root
         
 if __name__ == '__main__':
     MyApp().run()
