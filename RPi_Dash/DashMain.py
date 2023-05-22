@@ -1,4 +1,5 @@
 import time
+from datetime import datetime
 
 import kivy
 from kivy.app import App
@@ -23,8 +24,9 @@ class myclock(Label):
     def update(self, *args):
         #Updates the clock value each second
  
-          # get the current local time
-        self.text = "        TIME: " + time.asctime().split(' ')[3]
+        #Get the current local time       
+        self.text = "        TIME: " + datetime.today().strftime("%I:%M %p")        
+        # self.text = "        TIME: " + time.asctime().split(' ')[3]
         self.font_size = '20sp'
         self.font_name = 'RobotoMono-Regular'
         self.halign = 'left'
@@ -43,7 +45,7 @@ class MyApp(App):
         self.label_time = myclock() # calling clock class for time        
         self.label_speed = Label(text='       SPEED: 28 MPH', font_size='20sp', font_name='RobotoMono-Regular', halign='left')      
         self.label_rpm = Label(text='         RPM: 2550', font_size='20sp', font_name='RobotoMono-Regular', halign='left')         
-        self.label_heading = Label(text='     HEADING: NNE', font_size='20sp', font_name='RobotoMono-Regular', halign='left')
+        self.label_heading = Label(text='     HEADING: NE', font_size='20sp', font_name='RobotoMono-Regular', halign='left')
         self.label_lights = Label(text='      LIGHTS: ON', font_size='20sp', font_name='RobotoMono-Regular', halign='left')        
 
         self.progress_speed = ProgressBar(max=40, value=28)
