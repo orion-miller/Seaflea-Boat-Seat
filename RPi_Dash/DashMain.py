@@ -7,6 +7,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
+from kivy.uix.progressbar import ProgressBar
 from kivy.config import Config
 from kivy.core.window import Window
 from kivy.clock import Clock
@@ -40,10 +41,13 @@ class MyApp(App):
         self.root.orientation = 'vertical'
 
         self.label_time = myclock() # calling clock class for time        
-        self.label_speed = Label(text='       SPEED: 28 MPH', font_size='20sp', font_name='RobotoMono-Regular', halign='left')
-        self.label_rpm = Label(text='         RPM: 2550', font_size='20sp', font_name='RobotoMono-Regular', halign='left')
+        self.label_speed = Label(text='       SPEED: 28 MPH', font_size='20sp', font_name='RobotoMono-Regular', halign='left')      
+        self.label_rpm = Label(text='         RPM: 2550', font_size='20sp', font_name='RobotoMono-Regular', halign='left')         
         self.label_heading = Label(text='     HEADING: NNE', font_size='20sp', font_name='RobotoMono-Regular', halign='left')
         self.label_lights = Label(text='      LIGHTS: ON', font_size='20sp', font_name='RobotoMono-Regular', halign='left')        
+
+        self.progress_speed = ProgressBar(max=40, value=28)
+        self.progress_rpm = ProgressBar(max=4000, value=2550) 
 
         # updates time with the interval of 1 sec
         Clock.schedule_interval(self.label_time.update, 1)
@@ -56,7 +60,10 @@ class MyApp(App):
                  
         self.root.add_widget(self.label_time)      
         self.root.add_widget(self.label_speed) 
+        self.root.add_widget(self.progress_speed)           
         self.root.add_widget(self.label_rpm) 
+        self.root.add_widget(self.progress_rpm) 
+        self.root.progress_rpm = ProgressBar(max=4000, value=2550)        
         self.root.add_widget(self.label_heading) 
         self.root.add_widget(self.label_lights)       
 
